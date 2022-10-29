@@ -1,0 +1,22 @@
+run:
+  build-tags:
+    - integration
+    - unit
+
+linters:
+  enable:
+    - goimports
+    - goconst
+    - bodyclose
+    - gochecknoglobals
+    - gofmt
+    - govet
+    - stylecheck
+    - unconvert
+    - unparam
+    - misspell
+    - whitespace
+    - bodyclose
+    - gocritic
+    - testpackage
+    - gosec

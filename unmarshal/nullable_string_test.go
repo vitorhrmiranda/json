@@ -1,3 +1,6 @@
+//go:build unit
+// +build unit
+
 package unmarshal_test
 
 import (
@@ -11,7 +14,6 @@ import (
 
 type parseable struct {
 	Name unmarshal.NullableString `json:"name"`
-	Last *string                  `json:"last"`
 }
 
 func parse(t *testing.T, b []byte) (p parseable) {
@@ -34,28 +36,28 @@ func TestParse(t *testing.T) {
 	}{
 		{
 			when: "when send with value",
-			json: `{"name":"test", "last":"test"}`,
+			json: `{"name":"test"}`,
 			expect: parseable{
 				Name: unmarshal.String("test"),
-				Last: String("test")}},
+			}},
 		{
 			when: "when send with empty value",
-			json: `{"name":"", "last":""}`,
+			json: `{"name":""}`,
 			expect: parseable{
 				Name: unmarshal.String(""),
-				Last: String("")}},
+			}},
 		{
 			when: "when doesnt send any field",
 			json: `{}`,
 			expect: parseable{
 				Name: unmarshal.NullableString{},
-				Last: nil}},
+			}},
 		{
 			when: "when send with empty value as null",
-			json: `{"name":null, "last":null}`,
+			json: `{"name":null}`,
 			expect: parseable{
-				Name: unmarshal.String(""),
-				Last: nil}},
+				Name: unmarshal.NullableString{Valid: true},
+			}},
 	}
 
 	for _, tt := range tcases {

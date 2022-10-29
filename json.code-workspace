@@ -8,7 +8,7 @@
 		"go.lintTool": "golangci-lint",
 		"go.lintFlags": ["--fast"],
 		"go.lintOnSave": "file",
-		"go.testFlags": ["-v", "-count=1", "-timeout=10s"],
+		"go.testFlags": ["-v", "-count=1"],
 
 		"launch": {
 			"configurations": [
